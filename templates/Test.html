@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add your button styles here */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button {
+            flex: 1;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+
+        .button-default {
+            background-color: #3498db;
+            color: #fff;
+            border: 2px solid #3498db;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+            color: #fff;
+        }
+
+        .button:active {
+            background-color: #216a94;
+        }
+
+        .button:disabled {
+            background-color: #bdc3c7;
+            color: #7f8c8d;
+            cursor: not-allowed;
+        }
+
+        /* Add your image and form container styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #333;
+            color: #fff;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 10px 10px 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top:20px;
+            margin-bottom:20px;
+        }
+
+        .image-item {
+          position: relative;
+            overflow: hidden;
+            width:300px;
+            height:300px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            margin: 10px 10px 10px 150px;
+        }
+
+        img {
+             width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .choices-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        .choices{
+        margin-bottom:10px;
+        margin-left:40px;
+          place-items: center;
+
+        }
+         .timer {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            color: #0074d9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="/">Anasayfa</a>
+        <a href="/DinozorBilgi">Dinozorlar Hakkında</a>
+        <a href="/all-dino">Tüm Dinozorlar</a>
+        <a href="/Test">Test</a>
+                <a href="/iletisim">İletişim</a>
+
+    </div>
+        <span class="timer" id="timer" data-duration="{{time}}">Süre: 30:00</span>
+
+    <h1>Test başladı..</h1>
+    <div class="content">
+        <form id="myForm" method="post" action="{% url 'sonuclar' %}">
+            {% csrf_token %}
+            {% for item in questChoices %}
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="{{ item.0 }}" alt="{{ title }}">
+                    </div>
+                    <div class="choices-container">
+                        {% for choice in item.1 %}
+                            <label class="choices">
+                                <input type="radio" name="{{ item.0 }}" value="{{ choice }}">
+                                {{ choice }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+<button class="button button-default" type="button" onclick="submitForm()">Testi Gönder</button>
+        </form>
+    </div>
+<script>
+    function selectRadio(selectedOption) {
+        // Your existing code for selecting radio buttons
+    }
+
+    const timer = document.getElementById('timer');
+    let seconds = 10 * 60;
+
+    function updateTimer() {
+        seconds--;
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        timer.textContent = `Süre: ${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+     if (seconds === 0) {
+        clearInterval(timerInterval);
+        document.querySelector('form').submit();
+    }
+    }
+
+    function submitForm() {
+        var selectedOptions = [];
+        var selectedRadios = document.querySelectorAll('.choices-container input[type="radio"]:checked');
+        selectedRadios.forEach(function (radio) {
+            selectedOptions.push({
+                question: radio.name,
+                value: radio.value
+            });
+        });
+
+        var form = document.getElementById('myForm');
+
+        var csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = 'csrfmiddlewaretoken';
+        csrfInput.value = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+        form.appendChild(csrfInput);
+
+        var cevaplarInput = document.createElement('input');
+        cevaplarInput.type = 'hidden';
+        cevaplarInput.name = 'cevaplar';
+        cevaplarInput.value = JSON.stringify(selectedOptions);
+        form.appendChild(cevaplarInput);
+
+        // Formu gönderin
+        form.submit();
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+</script>
+</body>
+
+</html>

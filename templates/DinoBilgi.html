@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.dinozorlar-listesi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dinozor {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+img {
+    width: 300px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+h2 {
+    margin-top: 10px;
+}
+
+p {
+    color: #555;
+}
+ .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #333;
+            color: #fff;
+            z-index: 1000;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 10px 10px 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+    </style>
+    <title>Dinozorlar Hakkında Bilgi</title>
+</head>
+<body>
+<div class="navbar">
+        <a href="/">Anasayfa</a>
+    <a href="/DinozorBilgi">Dinozorlar Hakkında</a>
+    <a href="/all-dino">Tüm Dinozorlar</a>
+                    <a href="/Test">Test</a>
+    <a href="/iletisim">İletişim</a>
+
+    </div>
+    <header>
+        <h1>Dinozorlar Hakkında Bilgi</h1>
+    </header>
+    <section class="dinozorlar-listesi">
+        <div class="dinozor" id="dinozor1">
+            <img src="https://www.dododex.com/media/creature/rex.png" alt="Tyrannosaurus Rex">
+            <h2>Tyrannosaurus Rex</h2>
+            <p>Tyrannosaurus Rex, Kuzey Amerika'da Geç Kretase Dönemi'nde yaşamış bir etobur dinozordur. Genellikle "T-Rex" olarak da bilinir.</p>
+        </div>
+        <!-- Diğer dinozorlar için benzer div'ler ekleyebilirsiniz -->
+    </section>
+
+    <section class="dinozorlar-listesi">
+        <div class="dinozor" id="dinozor2">
+            <img src="https://www.dododex.com/media/creature/ankylosaurus.png" alt="Ankylosaurus">
+            <h2>Ankylosaurus</h2>
+            <p>Ankylosaurus, Geç Kretase Dönemi'nde yaşamış olan zırhlı bir otobur dinozordur. Özellikle vücudundaki koruyucu plakalarıyla tanınır.</p>
+        </div>
+        <div class="dinozor" id="dinozor3">
+            <img src="https://www.dododex.com/media/creature/brontosaurus.png" alt="Brontosaurus">
+            <h2>Brontosaurus</h2>
+            <p>Brontosaurus, Büyük Patagonya Dinozoru olarak da bilinen devasa bir otobur dinozordur. Uzun boyuyla bilinir.</p>
+        </div>
+        <div class="dinozor" id="dinozor4">
+            <img src="https://www.dododex.com/media/creature/pteranodon.png" alt="Pterodactyl">
+            <h2>Pterodactyl</h2>
+            <p>Pterodactyl, Geç Jura Dönemi'nde yaşamış bir uçan sürüngen türüdür. Çoğunlukla yanlışlıkla dinozor olarak bilinir, ancak bir dinozor değildir.</p>
+        </div>
+        <div class="dinozor" id="dinozor5">
+            <img src="https://www.dododex.com/media/creature/triceratops.png" alt="Triceratops">
+            <h2>Triceratops</h2>
+            <p>Triceratops, Geç Kretase Dönemi'nde yaşamış üç boynuzlu bir otobur dinozordur. Genellikle büyük gövdesi ve boynuzlarıyla bilinir.</p>
+        </div>
+    </section>
+
+</body>
+</html>

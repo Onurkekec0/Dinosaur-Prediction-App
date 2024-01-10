@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sonuclar</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .result-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .result-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .correct {
+            color: #28a745;
+        }
+
+        .incorrect {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Sonuçlar</h1>
+        <p class="result-text">Doğru Cevaplar: <span class="correct">{{true}}</span></p>
+        <p class="result-text">Yanlış Cevaplar: <span class="incorrect">{{false}}</span></p>
+    </div>
+</body>
+</html>

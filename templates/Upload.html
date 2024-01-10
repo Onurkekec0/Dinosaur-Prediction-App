@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uploaded Photo</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Stil özelleştirmeleri buraya eklenebilir */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .photo-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .img-fluid{
+        width: 300px;
+         height: 200px;
+        }
+             .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #333;
+            color: #fff;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 10px 10px 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 100px;
+        }
+         .custom-style {
+    margin: 30px;
+    position:relative;
+    font-size: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+    </style>
+</head>
+<body>
+<div class="navbar">
+        <a href="/">Anasayfa</a>
+    <a href="/DinozorBilgi">Dinozorlar Hakkında</a>
+    <a href="/all-dino">Tüm Dinozorlar</a>
+                    <a href="/Test">Test</a>
+    <a href="/iletisim">İletişim</a>
+
+    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Resimdeki Dinozor Bence..</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 photo-container">
+            <img src="{{ MEDIA_URL }}{{ data }}" alt="Your Photo" class="img-fluid">
+        </div>
+    </div>
+            <p class="custom-style">{{kim}} olduğunu düşünüyorum...</p>
+    <h1>Detaylı Bilgi</h1>
+    <p>{{bilgi}}</p>
+
+</div>
+
+</body>
+</html>

@@ -41,6 +41,8 @@ To enhance user engagement, a test application has been incorporated, allowing u
 4. Run the development server:
    ```bash
    python manage.py runserver
+
+Warning: Please add your own ChatGPT API to the views.py file before running the application. If you don't have one, make the necessary modifications in the specified areas.
   
 Visit http://localhost:8000 in your web browser to explore the Dinosaur Classification web application.
 
